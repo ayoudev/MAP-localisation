@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Ajoutez vos styles personnalisés ici */
+        body {
+            background-color: #f8f9fa;
+        }
+        .signup-container {
+            margin-top: 100px;
+            border: 1px solid #ced4da; /* Couleur de la bordure */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre */
+            padding: 20px; /* Espacement interne */
+            width: 400px; /* Largeur du formulaire */
+            margin-left: auto; /* Centrer le formulaire horizontalement */
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4">
+            <!-- Ajouter la classe "signup-container" à l'élément div contenant le formulaire -->
+            <div class="signup-container">
+                <h2 class="text-center mb-4">Inscription</h2>
+                <form th:action="@{/save}" method="post">
+                    <div class="form-group">
+                    <label for="lastName">Nom</label>
+                    <input type="text" name="nom" class="form-control" id="lastName" placeholder="Entrez votre nom">
+                </div>
+                    <div class="form-group">
+                        <label for="firstName">Prénom</label>
+                        <input type="text" name="prenom" class="form-control" id="firstName" placeholder="Entrez votre prénom">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" name="mail" class="form-control" id="email" placeholder="Entrez votre adresse email">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Mot de passe</label>
+                        <input type="password" name="password" class="form-control" id="password" placeholder="Entrez votre mot de passe">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">S'inscrire</button>
+                </form>
+                <p class="text-center mt-3">Vous avez déjà un compte? <a href="login">Connectez-vous ici</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Bootstrap JS (optionnel si vous n'utilisez pas de composants JavaScript) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

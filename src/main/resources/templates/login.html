@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:c="http://www.w3.org/1999/XSL/Transform">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Ajoutez vos styles personnalisés ici */
+        body {
+            background-color: #f8f9fa;
+        }
+        .login-container {
+            margin-top: 100px;
+            border: 1px solid #ced4da; /* Couleur de la bordure */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre */
+            padding: 20px; /* Espacement interne */
+            width: 400px; /* Largeur du formulaire */
+            margin-left: auto; /* Centrer le formulaire horizontalement */
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4">
+            <div class="login-container">
+                <h2 class="text-center mb-4">Connexion</h2>
+                <!-- Affichage de l'alerte si le paramètre 'error' est présent dans le modèle -->
+                <div class="alert alert-danger" role="alert" th:if="${error}">
+                    <span th:text="${error}"></span>
+                </div>
+                <form th:action="@{/authenticate}" method="post" onsubmit="return validateForm()">
+                    <div class="form-group">
+                        <label for="mail">Mail</label>
+                        <input type="text" name="mail" class="form-control" id="mail" placeholder="Entrez votre mail">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Mot de passe</label>
+                        <input type="password" name="password" class="form-control" id="password" placeholder="Entrez votre mot de passe">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Se connecter</button>
+                </form>
+                <p class="text-center mt-3">Vous n'avez pas de compte? <a href="signup">Inscrivez-vous ici</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Bootstrap JS (optionnel si vous n'utilisez pas de composants JavaScript) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    function validateForm() {
+        var mail = document.getElementById("mail").value;
+        var password = document.getElementById("password").value;
+
+        // Vérifier si les champs mail et password sont vides
+        if (mail.trim() == '' || password.trim() == '') {
+            alert("Veuillez remplir tous les champs.");
+            return false; // Empêcher la soumission du formulaire
+        }
+        return true; // Soumettre le formulaire
+    }
+</script>
+</body>
+</html>
